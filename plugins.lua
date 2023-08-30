@@ -49,7 +49,7 @@ local plugins = {
 
   -- FZF in Lua
   {
-    "ibhagwan/fzf-lua",
+    "ibhagwan/fzf-lua", lazy=false,
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
@@ -65,14 +65,14 @@ local plugins = {
   -- },
 
   -- Vyper Syntax Highlighting
-  {'vyperlang/vim-vyper'},
+  {'vyperlang/vim-vyper', lazy=false},
 
   -- Completion for things like jedi-language-server
   {'neovim/nvim-lspconfig'},
   {'hrsh7th/nvim-cmp'},
   {'hrsh7th/cmp-nvim-lsp'}, -- LSP source for nvim-cmp
   {'hrsh7th/cmp-buffer'},  -- Buffer source for nvim-cmp
-  {'ray-x/lsp_signature.nvim'} -- To show function signatures
+  {'ray-x/lsp_signature.nvim'}, -- To show function signatures
 
 }
 
