@@ -58,15 +58,22 @@ local plugins = {
     end
   },
 
-  {
-    'vyperlang/vim-vyper',
-  }
-
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
   --   enabled = false
   -- },
+
+  -- Vyper Syntax Highlighting
+  {'vyperlang/vim-vyper'},
+
+  -- Completion for things like jedi-language-server
+  {'neovim/nvim-lspconfig'},
+  {'hrsh7th/nvim-cmp'},
+  {'hrsh7th/cmp-nvim-lsp'}, -- LSP source for nvim-cmp
+  {'hrsh7th/cmp-buffer'},  -- Buffer source for nvim-cmp
+  {'ray-x/lsp_signature.nvim'} -- To show function signatures
+
 }
 
 return plugins
