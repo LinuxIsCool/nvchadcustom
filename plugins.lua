@@ -157,7 +157,12 @@ local plugins = {
     end
     },
 
-  {'aduros/ai.vim', lazy=false}
+  -- AI in Vim with :AI
+  {'aduros/ai.vim', lazy=false},
+
+  -- Readline in vim!
+  {'tpope/vim-rsi', lazy=false},
+
 
 }
 
