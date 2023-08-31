@@ -168,7 +168,7 @@ local plugins = {
   -- Readline in vim!
   {'tpope/vim-rsi', lazy=false},
 
-
+  {'psliwka/vim-smoothie', lazy=false},
 }
 
 return plugins
