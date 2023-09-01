@@ -1,6 +1,9 @@
 -- Set Leader Key
 vim.g.mapleader = ","
 
+-- Set Vim Options
+vim.opt.wrap = false
+
 ---@type ChadrcConfig
 local M = {}
 
@@ -10,7 +13,7 @@ local highlights = require "custom.highlights"
 M.ui = {
   theme = "everblush",
   theme_toggle = { "everblush", "one_light" },
-  transparency = true,
+  transparency = false,
 
   hl_override = highlights.override,
   hl_add = highlights.add,
