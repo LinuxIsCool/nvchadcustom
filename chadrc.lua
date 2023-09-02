@@ -2,7 +2,12 @@
 vim.g.mapleader = ","
 
 -- Set Vim Options
+
+-- No wrap line
 vim.opt.wrap = false
+
+-- Highlight the cursor line
+vim.opt.cursorline = true
 
 ---@type ChadrcConfig
 local M = {}
