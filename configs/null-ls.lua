@@ -13,7 +13,10 @@ local sources = {
 
   -- Python
   b.formatting.isort,
-  b.formatting.blue,
+  b.formatting.blue.with {
+    filetypes = { "python" },
+    args = { "--stdin-filename", "$FILENAME", "--quiet", "-", "-l", "88" },
+  },
 }
 
 local async_formatting = function(bufnr)
