@@ -47,7 +47,7 @@ end
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup {
-  debug = true,
+  debug = false,
   sources = sources,
   -- add your sources / config options here
   on_attach = function(client, bufnr)
