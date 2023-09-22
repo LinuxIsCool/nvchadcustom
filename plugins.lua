@@ -136,6 +136,7 @@ local plugins = {
       vim.keymap.set("n", "fbl", "<cmd>lua require('fzf-lua').blines()<CR>", { silent = true })
       vim.keymap.set("n", "fl", "<cmd>lua require('fzf-lua').lines()<CR>", { silent = true })
       vim.keymap.set("n", "ff", "<cmd>lua require('fzf-lua').builtin()<CR>", { silent = true })
+      vim.keymap.set("n", "fc", "<cmd>lua require('fzf-lua').command_history()<CR>", { silent = true })
     end,
   },
 
