@@ -291,6 +291,13 @@ local plugins = {
       },
     },
   },
+  -- { "nvim-treesitter/nvim-treesitter-refactor", lazy = false },
+  {
+    "iamcco/markdown-preview.nvim",
+    ft = "markdown",
+    -- build = "cd app && yarn install",
+    build = ":call mkdp#util#install()",
+  },
 }
 
 return plugins
