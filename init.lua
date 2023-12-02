@@ -6,3 +6,9 @@
 --   command = "tabdo wincmd =",
 -- })
 --
+--
+--
+-- PYTHON PROVIDER CONFIGURATION
+-- Set the command to start Python 3
+vim.g.python3_host_prog = '/usr/bin/python'
+vim.g.vim_markdown_preview_github=1

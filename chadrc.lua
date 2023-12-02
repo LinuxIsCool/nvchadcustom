@@ -9,6 +9,9 @@ vim.opt.wrap = false
 -- Highlight the cursor line
 vim.opt.cursorline = true
 
+-- Set Spell on by Default
+vim.opt.spell = true
+
 ---@type ChadrcConfig
 local M = {}
 

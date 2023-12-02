@@ -17,9 +17,11 @@ end
 
 -- Powerhouse for Autocomplete, Signatures, and Diagnostics.
 lspconfig.jedi_language_server.setup {
-  on_attach = function(client, bufnr)
-    require("lsp_signature").on_attach()
-  end,
+
+  -- Attaching to lsp signatures for functions.
+  -- on_attach = function(client, bufnr)
+  --   require("lsp_signature").on_attach()
+  -- end,
   capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
   settings = {
     jedi = {

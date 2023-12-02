@@ -24,6 +24,9 @@ M.general = {
     ["<leader>f"] = { "0", "go to start of line", opts = { nowait = true } },
     ["<leader>j"] = { "$", "go to end of line", opts = { nowait = true } },
     ["tt"] = { ":lua require('base46').toggle_transparency()<cr>", "toggle transparency", opts = { nowait = true } },
+    ["<leader>u"] = {":UndotreeToggle<CR>"},
+    ["<C-i>"] = { "<C-i>", opts = { noremap = true } },
+    ["<C-o>"] = { "<C-o>", opts = { noremap = true } },
   },
   v = {
     ["<leader>f"] = { "0", "go to start of line", opts = { nowait = true } },
