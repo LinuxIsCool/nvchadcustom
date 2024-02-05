@@ -13,10 +13,11 @@ local sources = {
 
   -- Python
   b.formatting.isort,
-  b.formatting.blue.with {
-    filetypes = { "python" },
-    args = { "--stdin-filename", "$FILENAME", "--quiet", "-", "-l", "88" },
-  },
+  -- b.formatting.blue.with {
+  --   filetypes = { "python" },
+  --   args = { "--stdin-filename", "$FILENAME", "--quiet", "-", "-l", "88" },
+  -- },
+  b.formatting.black
 }
 
 local async_formatting = function(bufnr)
@@ -45,6 +46,7 @@ local async_formatting = function(bufnr)
   end)
 end
 
+-- Automatically format on save
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup {
   debug = false,
