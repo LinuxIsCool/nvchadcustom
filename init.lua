@@ -10,5 +10,6 @@
 --
 -- PYTHON PROVIDER CONFIGURATION
 -- Set the command to start Python 3
-vim.g.python3_host_prog = '/usr/bin/python'
-vim.g.vim_markdown_preview_github=1
+vim.g.python3_host_prog = "/usr/bin/python"
+vim.g.vim_markdown_preview_github = 1
+-- vim.api.nvim_set_keymap("n", "<Esc>[105;6u", "<C-i>", { noremap = true, silent = true })

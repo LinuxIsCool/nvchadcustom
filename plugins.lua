@@ -296,7 +296,38 @@ local plugins = {
   --     },
   --   },
   -- },
-  -- { "nvim-treesitter/nvim-treesitter-refactor", lazy = false },
+  {
+    "nvim-treesitter/nvim-treesitter-refactor",
+    lazy = false,
+    config = function()
+      require("nvim-treesitter.configs").setup {
+        refactor = {
+          highlight_definitions = {
+            enable = true,
+            clear_on_cursor_move = true,
+          },
+          smart_rename = {
+            enable = true,
+            -- Assign keymaps to false to disable them, e.g. `smart_rename = false`.
+            keymaps = {
+              smart_rename = "<a-r>",
+            },
+          },
+          navigation = {
+            enable = true,
+            -- Assign keymaps to false to disable them, e.g. `goto_definition = false`.
+            keymaps = {
+              goto_definition = "<a-d>",
+              list_definitions = "<a-D>",
+              list_definitions_toc = false,
+              goto_next_usage = "<a-n>",
+              goto_previous_usage = "<a-p>",
+            },
+          },
+        },
+      }
+    end,
+  },
   {
     "iamcco/markdown-preview.nvim",
     ft = "markdown",
@@ -304,16 +335,40 @@ local plugins = {
     build = ":call mkdp#util#install()",
   },
   {
-    'kqito/vim-easy-replace', lazy=false,
+    "kqito/vim-easy-replace",
+    lazy = false,
   },
   {
-    'mbbill/undotree', lazy=false,
-  }
+    "mbbill/undotree",
+    lazy = false,
+  },
   -- {
   --   "linuxiscool/vim-markdown-preview",
   --   ft = "markdown",
   -- },
 
+  {
+    "nvim-neorg/neorg",
+    lazy = false,
+    build = ":Neorg sync-parsers",
+    -- tag = "*",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("neorg").setup {
+        load = {
+          ["core.defaults"] = {}, -- Loads default behaviour
+          ["core.concealer"] = {}, -- Adds pretty icons to your documents
+          ["core.dirman"] = { -- Manages Neorg workspaces
+            config = {
+              workspaces = {
+                neorg = "~/neorg",
+              },
+            },
+          },
+        },
+      }
+    end,
+  },
 }
 
 return plugins

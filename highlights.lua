@@ -8,8 +8,11 @@ local M = {}
 M.override = {
   Comment = {
     italic = true,
+    fg = "#7f7f7f",
   },
   NvimTreeGitDirty = { fg = "red", bold = true },
+  -- CursorLine = { bg = "line" },
+  -- CursorColumn = { bg = "line" },
 }
 
 ---@type HLTable
