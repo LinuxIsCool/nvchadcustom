@@ -11,7 +11,7 @@ M.override = {
     fg = "#7f7f7f",
   },
   NvimTreeGitDirty = { fg = "red", bold = true },
-  -- CursorLine = { bg = "line" },
+  CursorLine = { bg = "line" },
   -- CursorColumn = { bg = "line" },
 }
 
