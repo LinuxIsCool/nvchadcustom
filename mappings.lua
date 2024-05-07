@@ -15,6 +15,8 @@ M.disabled = {
     ["<leader>fz"] = "",
     ["<leader>j"] = "",
     ["<leader>r"] = "",
+    ["j"] = "",
+    ["k"] = "",
   },
 }
 
@@ -25,6 +27,8 @@ M.general = {
     ["<leader>j"] = { "$", "go to end of line", opts = { nowait = true } },
     ["tt"] = { ":lua require('base46').toggle_transparency()<cr>", "toggle transparency", opts = { nowait = true } },
     ["<leader>u"] = { ":UndotreeToggle<CR>" },
+    ["j"] = { "j" },
+    ["k"] = { "k" },
 
     -- Scroll through nvim tree files
     -- ["<C-j>"] = { ":lua require'nvim-tree'.on_keypress('next_sibling')<CR>", "Next file in tree", opts = { noremap = true, silent = true } },
