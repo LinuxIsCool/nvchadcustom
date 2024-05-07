@@ -142,7 +142,7 @@ local plugins = {
   },
 
   -- Vyper Syntax Highlighting
-  { "vyperlang/vim-vyper", lazy = false },
+  { "vyperlang/vim-vyper",     lazy = false },
 
   -- Snips
   { "L3MON4D3/LuaSnip" },
@@ -178,8 +178,8 @@ local plugins = {
       }
     end,
   },
-  { "hrsh7th/cmp-nvim-lsp" }, -- LSP source for nvim-cmp
-  { "hrsh7th/cmp-buffer" }, -- Buffer source for nvim-cmp
+  { "hrsh7th/cmp-nvim-lsp" },     -- LSP source for nvim-cmp
+  { "hrsh7th/cmp-buffer" },       -- Buffer source for nvim-cmp
   { "ray-x/lsp_signature.nvim" }, -- To show function signatures
   {
     "Exafunction/codeium.vim",
@@ -206,10 +206,10 @@ local plugins = {
   },
 
   -- AI in Vim with :AI
-  { "aduros/ai.vim", lazy = false },
+  { "aduros/ai.vim",        lazy = false },
 
   -- Readline in vim!
-  { "tpope/vim-rsi", lazy = false },
+  { "tpope/vim-rsi",        lazy = false },
 
   -- Smooth scrolling in vim :)
   { "psliwka/vim-smoothie", lazy = false },
@@ -347,28 +347,28 @@ local plugins = {
   --   ft = "markdown",
   -- },
 
-  {
-    "nvim-neorg/neorg",
-    lazy = false,
-    build = ":Neorg sync-parsers",
-    -- tag = "*",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("neorg").setup {
-        load = {
-          ["core.defaults"] = {}, -- Loads default behaviour
-          ["core.concealer"] = {}, -- Adds pretty icons to your documents
-          ["core.dirman"] = { -- Manages Neorg workspaces
-            config = {
-              workspaces = {
-                neorg = "~/neorg",
-              },
-            },
-          },
-        },
-      }
-    end,
-  },
+  -- {
+  --   "nvim-neorg/neorg",
+  --   lazy = false,
+  --   build = ":Neorg sync-parsers",
+  --   -- tag = "*",
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  --   config = function()
+  --     require("neorg").setup {
+  --       load = {
+  --         ["core.defaults"] = {}, -- Loads default behaviour
+  --         ["core.concealer"] = {}, -- Adds pretty icons to your documents
+  --         ["core.dirman"] = { -- Manages Neorg workspaces
+  --           config = {
+  --             workspaces = {
+  --               neorg = "~/neorg",
+  --             },
+  --           },
+  --         },
+  --       },
+  --     }
+  --   end,
+  -- },
 }
 
 return plugins
