@@ -37,6 +37,11 @@ M.general = {
   v = {
     ["<leader>f"] = { "0", "go to start of line", opts = { nowait = true } },
     ["<leader>j"] = { "$", "go to end of line", opts = { nowait = true } },
+    ["<C-c>"] = { '"+y', "copy selection to clipboard", opts = { noremap = true, silent = true } },
+    ["<C-v>"] = { '"+p', "paste from clipboard", opts = { noremap = true, silent = true } },
+  },
+  i = {
+    ["<C-v>"] = { "<C-r>+", "paste from clipboard", opts = { noremap = true, silent = true } },
   },
 }
 
