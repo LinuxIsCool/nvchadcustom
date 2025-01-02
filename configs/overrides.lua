@@ -18,6 +18,7 @@ M.treesitter = {
     enable = true,
     disable = {
       "python",
+      "typescript",
     },
   },
 }

@@ -6,7 +6,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- To get nvchad default configs, put in this table:
-local servers = { "html", "cssls", "tsserver", "clangd", "rust_analyzer" }
+local servers = { "html", "cssls", "denols", "clangd", "rust_analyzer" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
