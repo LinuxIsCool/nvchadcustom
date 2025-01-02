@@ -1,8 +1,32 @@
 -- See `:help lspconfig-setup`
+local on_attach = function(client, bufnr)
+  -- First run the original on_attach from plugins.configs.lspconfig
+  require("plugins.configs.lspconfig").on_attach(client, bufnr)
 
-local on_attach = require("plugins.configs.lspconfig").on_attach
+  -- Then setup signature help with vertical display
+  require("lsp_signature").on_attach({
+    bind = true,
+    handler_opts = {
+      border = "rounded"
+    },
+    hint_enable = false,
+    max_width = 80,
+    max_height = 12,
+    padding = " ",
+    floating_window = true,
+    floating_window_above_cur_line = true,
+    floating_window_off_x = 40,
+    floating_window_off_y = -10,
+    doc_lines = 10,
+    decorator = { "**", "**" },
+    parameters_in_one_line = false,
+    signature_pattern = "^ *[)([%w: %-]*%( *",
+    hi_parameter = "Search",
+    separator_pattern = " ->",
+  }, bufnr)
+end
+
 local capabilities = require("plugins.configs.lspconfig").capabilities
-
 local lspconfig = require "lspconfig"
 
 -- To get nvchad default configs, put in this table:
@@ -17,11 +41,7 @@ end
 
 -- Powerhouse for Autocomplete, Signatures, and Diagnostics.
 lspconfig.jedi_language_server.setup {
-
-  -- Attaching to lsp signatures for functions.
-  -- on_attach = function(client, bufnr)
-  --   require("lsp_signature").on_attach()
-  -- end,
+  on_attach = on_attach, -- Added this line to enable signature help for Python
   capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
   settings = {
     jedi = {
@@ -37,6 +57,7 @@ lspconfig.jedi_language_server.setup {
 
 -- Use pyright for goto statements when exploring library code.
 lspconfig.pyright.setup {
+  on_attach = on_attach, -- Added this line to enable signature help for Python
   cmd = { "pyright-langserver", "--stdio" },
   filetypes = { "python" },
   handlers = {
