@@ -7,7 +7,7 @@ local on_attach = function(client, bufnr)
   require("lsp_signature").on_attach({
     bind = true,
     handler_opts = {
-      border = "rounded"
+      border = "rounded",
     },
     hint_enable = false,
     max_width = 80,
@@ -30,7 +30,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- To get nvchad default configs, put in this table:
-local servers = { "html", "cssls", "denols", "clangd", "rust_analyzer" }
+local servers = { "html", "cssls", "denols", "clangd", "rust_analyzer", "ts_ls" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -38,6 +38,39 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+lspconfig.ts_ls.setup {
+  root_dir = require('lspconfig.util').root_pattern('tsconfig.json', 'package.json'),
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    typescript = {
+      inlayHints = {
+        includeInlayParameterNameHints = "all",
+        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      },
+      preferences = {
+        importModuleSpecifier = "relative",
+      },
+    },
+    javascript = {
+      inlayHints = {
+        includeInlayParameterNameHints = "all",
+        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      },
+    }
+  }
+}
 
 -- Powerhouse for Autocomplete, Signatures, and Diagnostics.
 lspconfig.jedi_language_server.setup {
