@@ -33,7 +33,7 @@ M.mason = {
     "css-lsp",
     "html-lsp",
     "typescript-language-server",
-    "deno",
+    -- "deno",
     "prettier",
 
     -- c/cpp stuff
@@ -67,8 +67,8 @@ M.nvimtree = {
     preserve_window_proportions = true,
   },
   git = {
-    enable = true,
-    ignore = false,
+    enable = false,
+    ignore = true,
   },
   filesystem_watchers = {
     enable = true,
@@ -79,7 +79,9 @@ M.nvimtree = {
     },
   },
   renderer = {
-    root_folder_label = true,
+    root_folder_label = function(path)
+      return vim.fn.fnamemodify(path, ":t")
+    end,
     highlight_git = true,
     highlight_opened_files = "icon",
 

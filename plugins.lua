@@ -123,26 +123,26 @@ local plugins = {
   -- FZF in Lua
   {
     "ibhagwan/fzf-lua",
-    lazy = false,
+    keys = {
+      { "fp", "<cmd>lua require('fzf-lua').files()<CR>", desc = "FZF Files" },
+      { "fo", "<cmd>lua require('fzf-lua').oldfiles()<CR>", desc = "FZF Old Files" },
+      { "fg", "<cmd>lua require('fzf-lua').grep_project()<CR>", desc = "FZF Grep" },
+      { "fb", "<cmd>lua require('fzf-lua').buffers()<CR>", desc = "FZF Buffers" },
+      { "fbl", "<cmd>lua require('fzf-lua').blines()<CR>", desc = "FZF Buffer Lines" },
+      { "fl", "<cmd>lua require('fzf-lua').lines()<CR>", desc = "FZF Lines" },
+      { "ff", "<cmd>lua require('fzf-lua').builtin()<CR>", desc = "FZF Builtin" },
+      { "fc", "<cmd>lua require('fzf-lua').command_history()<CR>", desc = "FZF Command History" },
+      { "fj", "<cmd>lua require('fzf-lua').jumps()<CR>", desc = "FZF Jumps" },
+    },
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      -- calling `setup` is optional for customization
       require("fzf-lua").setup {}
-      vim.keymap.set("n", "fp", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
-      vim.keymap.set("n", "fo", "<cmd>lua require('fzf-lua').oldfiles()<CR>", { silent = true })
-      vim.keymap.set("n", "fg", "<cmd>lua require('fzf-lua').grep_project()<CR>", { silent = true })
-      vim.keymap.set("n", "fb", "<cmd>lua require('fzf-lua').buffers()<CR>", { silent = true })
-      vim.keymap.set("n", "fbl", "<cmd>lua require('fzf-lua').blines()<CR>", { silent = true })
-      vim.keymap.set("n", "fl", "<cmd>lua require('fzf-lua').lines()<CR>", { silent = true })
-      vim.keymap.set("n", "ff", "<cmd>lua require('fzf-lua').builtin()<CR>", { silent = true })
-      vim.keymap.set("n", "fc", "<cmd>lua require('fzf-lua').command_history()<CR>", { silent = true })
-      vim.keymap.set("n", "fj", "<cmd>lua require('fzf-lua').jumps()<CR>", { silent = true })
     end,
   },
 
   -- Vyper Syntax Highlighting
-  { "vyperlang/vim-vyper",     lazy = false },
+  { "vyperlang/vim-vyper", lazy = false },
 
   -- Snips
   { "L3MON4D3/LuaSnip" },
@@ -178,13 +178,12 @@ local plugins = {
       }
     end,
   },
-  { "hrsh7th/cmp-nvim-lsp" },     -- LSP source for nvim-cmp
-  { "hrsh7th/cmp-buffer" },       -- Buffer source for nvim-cmp
+  { "hrsh7th/cmp-nvim-lsp" }, -- LSP source for nvim-cmp
+  { "hrsh7th/cmp-buffer" }, -- Buffer source for nvim-cmp
   { "ray-x/lsp_signature.nvim" }, -- To show function signatures
   {
     "Exafunction/codeium.vim",
-    event = "BufEnter",
-    lazy = false,
+    event = "InsertEnter",
     config = function()
       vim.g.codeium_no_map_tab = 1
       vim.keymap.set("i", "<C-f>", function()
@@ -209,7 +208,7 @@ local plugins = {
   -- { "aduros/ai.vim",        lazy = false },
 
   -- Readline in vim!
-  { "tpope/vim-rsi",        lazy = false },
+  { "tpope/vim-rsi", lazy = false },
 
   -- Smooth scrolling in vim :)
   { "psliwka/vim-smoothie", lazy = false },
@@ -371,8 +370,12 @@ local plugins = {
   -- },
   {
     "yetone/avante.nvim",
-    event = "VeryLazy",
-    lazy = false,
+    cmd = { "AvanteAsk", "AvanteChat", "AvanteToggle", "AvanteBuild" },
+    keys = {
+      { "<leader>aa", "<cmd>AvanteAsk<cr>", desc = "Avante Ask" },
+      { "<leader>at", "<cmd>AvanteToggle<cr>", desc = "Avante Toggle" },
+    },
+    lazy = true,
     version = false, -- set this if you want to always pull the latest change
     opts = {
       -- add any opts here
@@ -385,9 +388,9 @@ local plugins = {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
-      "hrsh7th/nvim-cmp",            -- autocompletion for avante commands and mentions
+      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
       "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua",      -- for providers='copilot'
+      "zbirenbaum/copilot.lua", -- for providers='copilot'
       {
         -- support for image pasting
         "HakonHarnes/img-clip.nvim",
@@ -407,14 +410,36 @@ local plugins = {
       },
       {
         -- Make sure to set this up properly if you have lazy=true
-        'MeanderingProgrammer/render-markdown.nvim',
+        "MeanderingProgrammer/render-markdown.nvim",
         opts = {
           file_types = { "markdown", "Avante" },
         },
         ft = { "markdown", "Avante" },
       },
     },
-  }
+  },
+  {
+    "hat0uma/csvview.nvim",
+    ---@module "csvview"
+    ---@type CsvView.Options
+    opts = {
+      parser = { comments = { "#", "//" } },
+      keymaps = {
+        -- Text objects for selecting fields
+        textobject_field_inner = { "if", mode = { "o", "x" } },
+        textobject_field_outer = { "af", mode = { "o", "x" } },
+        -- Excel-like navigation:
+        -- Use <Tab> and <S-Tab> to move horizontally between fields.
+        -- Use <Enter> and <S-Enter> to move vertically between rows and place the cursor at the end of the field.
+        -- Note: In terminals, you may need to enable CSI-u mode to use <S-Tab> and <S-Enter>.
+        jump_next_field_end = { "<Tab>", mode = { "n", "v" } },
+        jump_prev_field_end = { "<S-Tab>", mode = { "n", "v" } },
+        jump_next_row = { "<Enter>", mode = { "n", "v" } },
+        jump_prev_row = { "<S-Enter>", mode = { "n", "v" } },
+      },
+    },
+    cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
+  },
 }
 
 return plugins
